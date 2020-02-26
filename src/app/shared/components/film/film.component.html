@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [ngStyle]="{'background-color': color}">
   <img class="card-img-top" [src]="data.image" [alt]="data.name">
   <div class="card-block">
     <a [href]="data.imdbUrl" target="_blank">
@@ -6,7 +6,9 @@
     </a>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Genero: {{data.gender}}</li>
+    <li class="list-group-item" [ngStyle]="{'background-color': color}">
+      Genero: {{data.gender}}
+    </li>
   </ul>
   <div class="card-block">
     <a href="#" class="btn btn-primary" (click)="eliminarFilm()">Eliminar</a>
