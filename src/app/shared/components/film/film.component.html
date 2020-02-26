@@ -1,0 +1,14 @@
+<div class="card">
+  <img class="card-img-top" [src]="data.image" [alt]="data.name">
+  <div class="card-block">
+    <a [href]="data.imdbUrl" target="_blank">
+      <h4 class="card-title">{{data.name}}</h4>
+    </a>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Genero: {{data.gender}}</li>
+  </ul>
+  <div class="card-block">
+    <a href="#" class="btn btn-primary" (click)="eliminarFilm()">Eliminar</a>
+  </div>
+</div>
