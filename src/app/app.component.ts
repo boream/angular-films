@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck} from '@angular/core';
+import { IImage } from 'ng-simple-slideshow';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'films';
+export class AppComponent implements OnInit, DoCheck, OnDestroy {
 
+  ngOnInit() {
+    console.log("Lanzamos el init de la app");
+  }
+
+  ngDoCheck() {
+    console.log("Lanzamos el docheck de la app");
+  }
+    
+  ngOnDestroy() {
+    console.log("Destruimos la app");
+  }
+
+  title = 'films';
   films = [
     {
       name: 'Spectre 007',
@@ -25,14 +38,14 @@ export class AppComponent {
     },
     {
       name: 'Martin Hache',
-      gender: 'Aventura',
+      gender: 'Romance',
       // tslint:disable-next-line: max-line-length
       image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
       name: 'El lado oscuro del corazon',
-      gender: 'Aventura',
+      gender: 'Romance',
       // tslint:disable-next-line: max-line-length
       image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
@@ -40,10 +53,14 @@ export class AppComponent {
   ];
 
   eliminar(event) {
+    this.modalIsVisible = true;
     const index = this.films.findIndex(film => film.name === event.name);
     if (index > -1) {
       this.films.splice(index, 1)
     }
   }
 
+  toggleModal() {
+    this.modalIsVisible = !this.modalIsVisible;
+  }
 }

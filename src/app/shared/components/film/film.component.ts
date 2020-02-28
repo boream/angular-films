@@ -14,14 +14,18 @@ export class FilmComponent implements OnInit{
   @Output() remove = new EventEmitter();
 
   public color = 'red';
+  public isRomance = false;
+
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(`La peli ${this.data.name} es ${this.isEven ? 'par' : 'impar'}`);
+  
     if (!this.isEven) {
       this.color = '#fff';
     }
+
+    this.isRomance = this.data.gender === 'Romance';
     // throw new Error('Method not implemented.');
   }
 
