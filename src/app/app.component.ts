@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, DoCheck} from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { IImage } from 'ng-simple-slideshow';
 
 @Component({
@@ -8,6 +8,9 @@ import { IImage } from 'ng-simple-slideshow';
 })
 export class AppComponent implements OnInit, DoCheck, OnDestroy {
 
+
+  modalIsVisible = false;
+  
   ngOnInit() {
     console.log("Lanzamos el init de la app");
   }
@@ -15,7 +18,7 @@ export class AppComponent implements OnInit, DoCheck, OnDestroy {
   ngDoCheck() {
     console.log("Lanzamos el docheck de la app");
   }
-    
+
   ngOnDestroy() {
     console.log("Destruimos la app");
   }
