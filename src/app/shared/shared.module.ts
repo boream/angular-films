@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FilmComponent } from './components/film/film.component';
 import { MyShadowDirective } from './directives/my-shadow.directive';
 import { CapitalizeFirstPipe } from './pipe/capitalize-first.pipe';
+import { FilmService } from '../services/film.service';
 
 
 
@@ -14,6 +15,9 @@ import { CapitalizeFirstPipe } from './pipe/capitalize-first.pipe';
   ],
   imports: [
     CommonModule
+  ],
+  providers: [
+    FilmService
   ],
   exports: [
     FilmComponent,

@@ -18,7 +18,9 @@ registerLocaleData(localeEs, 'es-ES');
     SharedModule,
     SlideshowModule
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'es-ES' } ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-ES' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

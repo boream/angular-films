@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
-import { IImage } from 'ng-simple-slideshow';
+import { FilmService } from './services/film.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,13 @@ import { IImage } from 'ng-simple-slideshow';
 export class AppComponent implements OnInit, DoCheck, OnDestroy {
 
   modalIsVisible = false;
-  
+
+
+  title = 'films';
+
+  constructor(public filmService: FilmService) {
+  }
+
   ngOnInit() {
     console.log("Lanzamos el init de la app");
   }
@@ -22,43 +28,9 @@ export class AppComponent implements OnInit, DoCheck, OnDestroy {
     console.log("Destruimos la app");
   }
 
-  title = 'films';
-  films = [
-    {
-      name: 'spectre 007',
-      gender: 'Aventura',
-      // tslint:disable-next-line: max-line-length
-      image: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjM2Nzg4MzkwOF5BMl5BanBnXkFtZTgwNzA0OTE3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      imdbUrl: 'http://www.imdb.com/title/tt2379713/'
-    },
-    {
-      name: 'badboys 3',
-      gender: 'Aventura',
-      // tslint:disable-next-line: max-line-length
-      image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
-      imdbUrl: 'http://www.imdb.com/title/tt2379713/'
-    },
-    {
-      name: 'martin hache',
-      gender: 'Romance',
-      // tslint:disable-next-line: max-line-length
-      image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
-      imdbUrl: 'http://www.imdb.com/title/tt2379713/'
-    },
-    {
-      name: 'el lado oscuro del corazon',
-      gender: 'Romance',
-      // tslint:disable-next-line: max-line-length
-      image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
-      imdbUrl: 'http://www.imdb.com/title/tt2379713/'
-    }
-  ];
-
-  eliminar(event) {
-    this.modalIsVisible = true;
-    const index = this.films.findIndex(film => film.name === event.name);
-    if (index > -1) {
-      this.films.splice(index, 1)
+  eliminar(film) {
+    if (window.confirm(`¿Seguro que quiere borrar la pelicula ${film.name}?`)) {
+      this.filmService.removeFilm(film);
     }
   }
 

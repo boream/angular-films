@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FilmService } from 'src/app/services/film.service';
 
 @Component({
   selector: 'app-film',
   templateUrl: './film.component.html',
   styleUrls: ['./film.component.scss']
 })
-export class FilmComponent implements OnInit{
+export class FilmComponent implements OnInit {
 
   @Input() public data: any;
 
@@ -20,7 +21,7 @@ export class FilmComponent implements OnInit{
   constructor() { }
 
   ngOnInit(): void {
-  
+
     if (!this.isEven) {
       this.color = '#fff';
     }
