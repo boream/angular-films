@@ -8,7 +8,6 @@ import { IImage } from 'ng-simple-slideshow';
 })
 export class AppComponent implements OnInit, DoCheck, OnDestroy {
 
-
   modalIsVisible = false;
   
   ngOnInit() {
@@ -26,28 +25,28 @@ export class AppComponent implements OnInit, DoCheck, OnDestroy {
   title = 'films';
   films = [
     {
-      name: 'Spectre 007',
+      name: 'spectre 007',
       gender: 'Aventura',
       // tslint:disable-next-line: max-line-length
       image: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjM2Nzg4MzkwOF5BMl5BanBnXkFtZTgwNzA0OTE3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg',
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
-      name: 'Badboys 3',
+      name: 'badboys 3',
       gender: 'Aventura',
       // tslint:disable-next-line: max-line-length
       image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
-      name: 'Martin Hache',
+      name: 'martin hache',
       gender: 'Romance',
       // tslint:disable-next-line: max-line-length
       image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
-      name: 'El lado oscuro del corazon',
+      name: 'el lado oscuro del corazon',
       gender: 'Romance',
       // tslint:disable-next-line: max-line-length
       image: 'http://www.iralcine.com/img-peliculas/pelicula-bad-boys-for-life.jpg',
@@ -65,5 +64,9 @@ export class AppComponent implements OnInit, DoCheck, OnDestroy {
 
   toggleModal() {
     this.modalIsVisible = !this.modalIsVisible;
+  }
+
+  nuevaFecha() {
+    return new Date();
   }
 }
