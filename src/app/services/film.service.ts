@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, LOCALE_ID } from '@angular/core';
+import { SESSION_STORAGE, LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FilmService {
 
   private _films = [
@@ -38,8 +37,8 @@ export class FilmService {
 
   // public films = this._films;
 
-  constructor() {
-
+  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService, @Inject(LOCALE_ID) private locale) {
+    debugger
   }
 
 
