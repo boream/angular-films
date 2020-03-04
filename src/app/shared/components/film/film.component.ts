@@ -14,7 +14,7 @@ export class FilmComponent implements OnInit {
 
   @Output() remove = new EventEmitter();
 
-  public color = 'red';
+  public color = '#e0e0e0';
   public isRomance = false;
 
 

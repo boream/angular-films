@@ -1,7 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { SESSION_STORAGE, LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FilmService {
 
   private _films = [
@@ -56,6 +58,11 @@ export class FilmService {
 
   removeFilm(film) {
     this._films = this._films.filter((data) => data.name !== film.name);
+    this.storage.set('films', this._films);
+  }
+
+  addFilm(film) {
+    this._films.push(film);
     this.storage.set('films', this._films);
   }
 

@@ -6,7 +6,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import {SlideshowModule} from 'ng-simple-slideshow';
-import { FilmService } from './services/film.service';
+// import { FilmService } from './services/film.service';
 
 registerLocaleData(localeEs, 'es-ES');
 
@@ -21,7 +21,7 @@ registerLocaleData(localeEs, 'es-ES');
   ],
   providers: [
     // FilmService,
-    { provide: FilmService, useClass: FilmService},
+    // { provide: FilmService, useClass: FilmService},
     { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
   bootstrap: [AppComponent]
