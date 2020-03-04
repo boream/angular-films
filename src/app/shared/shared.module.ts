@@ -6,6 +6,8 @@ import { MyShadowDirective } from './directives/my-shadow.directive';
 import { CapitalizeFirstPipe } from './pipe/capitalize-first.pipe';
 import { FilmFormComponent } from './components/film-form/film-form.component';
 import { FilmFormReactiveComponent } from './components/film-form-reactive/film-form-reactive.component';
+import { ListFilmComponent } from './components/list-film/list-film.component';
+import { CreateFilmComponent } from './components/create-film/create-film.component';
 
 
 
@@ -15,7 +17,9 @@ import { FilmFormReactiveComponent } from './components/film-form-reactive/film-
     MyShadowDirective,
     CapitalizeFirstPipe,
     FilmFormComponent,
-    FilmFormReactiveComponent
+    FilmFormReactiveComponent,
+    ListFilmComponent,
+    CreateFilmComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,8 @@ import { FilmFormReactiveComponent } from './components/film-form-reactive/film-
     FilmComponent,
     FilmFormComponent,
     FilmFormReactiveComponent,
-    CapitalizeFirstPipe
+    CapitalizeFirstPipe,
+    ListFilmComponent
   ]
 })
 export class SharedModule { }
