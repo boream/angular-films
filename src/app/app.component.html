@@ -1,5 +1,5 @@
 <div class="container">
-  <app-film-form-reactive></app-film-form-reactive>
+  <app-film-form-reactive (save)="saveFilm($event)"></app-film-form-reactive>
   
   <app-film-form (save)="saveFilm($event)"></app-film-form>
   <div class="card-deck-wrapper">

@@ -1,13 +1,16 @@
 <div class="jumbotron clearfix">
-  <form [formGroup]="formGroup">
+  <form [formGroup]="formGroup" (ngSubmit)="onSave(formGroup)">
     <h3>Crear nueva pelicula</h3>
     <div class="form-group ">
       <label class="form-control-label" for="name">Nombre</label>
       <input type="text" class="form-control" id="name" formControlName="name">
-      <div
-        [ngClass]="{'alert-danger': !formGroup.controls.name.valid && !formGroup.controls.name.pristine}">
-        <div class="form-control-feedback">Campo obligatorio</div>
-        <div class="form-control-feedback">Minimo 4 carácteres</div>
+      <div *ngIf="formGroup.controls.name.dirty" class="alert-danger">
+        <div class="form-control-feedback" [hidden]="!formGroup.controls.name.errors?.required">
+          Campo obligatorio
+        </div>
+        <div class="form-control-feedback" [hidden]="!formGroup.controls.name.errors?.minlength">
+          Minimo 4 carácteres
+        </div>
       </div>
     </div>
     <div class="form-group ">
@@ -16,27 +19,29 @@
         <option></option>
         <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
       </select>
-      <div class="form-control-feedback" [ngClass]="{'alert-danger':
-      !formGroup.controls.gender.valid && !formGroup.controls.gender.pristine}">
+      <div *ngIf="formGroup.controls.gender.touched && formGroup.controls.gender.errors?.required"
+        class="form-control-feedback alert-danger">
         Campo obligatorio
       </div>
     </div>
     <div class="form-group ">
       <label class="form-control-label" for="imdbUrl">IMDB Url</label>
       <input type="text" class="form-control" id="imdbUrl" formControlName="imdbUrl">
-      <div [ngClass]="{'alert-danger':
-      !formGroup.controls.imdbUrl.valid && !formGroup.controls.imdbUrl.pristine}">
-        <div class="form-control-feedback">Campo obligatorio</div>
+      <div *ngIf="formGroup.controls.imdbUrl.dirty">
+        <div [hidden]="!formGroup.controls.imdbUrl.errors?.required"
+          class="form-control-feedback alert-danger">
+          Campo obligatorio</div>
       </div>
     </div>
     <div class="form-group ">
       <label class="form-control-label" for="image">Imagen</label>
       <input type="text" class="form-control" id="image" formControlName="image">
-      <div [ngClass]="{'alert-danger':
-      !formGroup.controls.imdbUrl.valid && !formGroup.controls.imdbUrl.pristine}">
-        <div class="form-control-feedback">Campo obligatorio</div>
+      <div *ngIf="formGroup.controls.image.dirty">
+        <div [hidden]="!formGroup.controls.image.errors?.required"
+          class="form-control-feedback alert-danger">Campo obligatorio
+        </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">Guardar</button>
   </form>
 </div>
