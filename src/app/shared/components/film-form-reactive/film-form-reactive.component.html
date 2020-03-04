@@ -31,6 +31,9 @@
         <div [hidden]="!formGroup.controls.imdbUrl.errors?.required"
           class="form-control-feedback alert-danger">
           Campo obligatorio</div>
+        <div [hidden]="!formGroup.controls.imdbUrl.errors?.url"
+          class="form-control-feedback alert-danger">
+          La url es incorrecta</div>
       </div>
     </div>
     <div class="form-group ">
@@ -40,7 +43,15 @@
         <div [hidden]="!formGroup.controls.image.errors?.required"
           class="form-control-feedback alert-danger">Campo obligatorio
         </div>
+        <div [hidden]="!formGroup.controls.imdbUrl.errors?.url"
+          class="form-control-feedback alert-danger">
+          La url es incorrecta</div>
       </div>
+      <!--
+      <div [hidden]="!formGroup.errors?.sameUrl" class="form-control-feedback alert-danger">
+        Las urls no coinciden
+      </div>
+      -->
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">Guardar</button>
   </form>
