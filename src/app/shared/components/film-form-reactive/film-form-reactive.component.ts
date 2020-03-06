@@ -54,7 +54,7 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
   onSave(form) {
     const update = Object.assign({}, this.film, form.value);
     this.save.emit(update);
-    form.reset();
+    // form.reset();
   }
 
   private validateUrl(control: AbstractControl): { [key: string]: any } {

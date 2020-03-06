@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { Component } from '@angular/core';
 import { FilmService } from './services/film.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { FilmService } from './services/film.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, DoCheck, OnDestroy {
+export class AppComponent {
 
   modalIsVisible = false;
 
@@ -16,18 +16,6 @@ export class AppComponent implements OnInit, DoCheck, OnDestroy {
   title = 'films';
 
   constructor(public filmService: FilmService) {
-  }
-
-  ngOnInit() {
-    console.log("Lanzamos el init de la app");
-  }
-
-  ngDoCheck() {
-    console.log("Lanzamos el docheck de la app");
-  }
-
-  ngOnDestroy() {
-    console.log("Destruimos la app");
   }
 
   eliminar(film) {

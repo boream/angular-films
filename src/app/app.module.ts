@@ -9,27 +9,47 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ListFilmComponent } from './shared/components/list-film/list-film.component';
 import { CreateFilmComponent } from './shared/components/create-film/create-film.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CanActivateGuard } from './guards/can-activate.guard';
+import { SureExitGuard } from './guards/sure-exit.guard';
 // import { FilmService } from './services/film.service';
 
 registerLocaleData(localeEs, 'es-ES');
 
 const appRoutes: Routes = [
-  { path: 'film', component: ListFilmComponent },
-  { path: 'create', component: CreateFilmComponent },
+  {
+    path: 'film',
+    component: ListFilmComponent,
+    canActivate: [CanActivateGuard]
+  },
+  {
+    path: 'create',
+    component: CreateFilmComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [SureExitGuard]
+  },
   {
     path: 'edit/:id',
-    component: CreateFilmComponent
+    component: CreateFilmComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [SureExitGuard]
   },
   {
     path: '',
     redirectTo: '/film',
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    canActivate: [CanActivateGuard]
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

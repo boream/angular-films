@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FilmService } from 'src/app/services/film.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FilmFormReactiveComponent } from '../film-form-reactive/film-form-reactive.component';
 
 @Component({
   selector: 'app-create-film',
@@ -8,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-film.component.scss']
 })
 export class CreateFilmComponent implements OnInit {
+
+  @ViewChild(FilmFormReactiveComponent, { static: true }) form;
 
   film: any;
 
