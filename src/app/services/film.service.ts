@@ -8,7 +8,7 @@ export class FilmService {
 
   private _films = [
     {
-      id: '1',
+      id: '0',
       name: 'spectre 007',
       gender: 'Aventura',
       // tslint:disable-next-line: max-line-length
@@ -16,7 +16,7 @@ export class FilmService {
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
-      id: '2',
+      id: '1',
       name: 'badboys 3',
       gender: 'Aventura',
       // tslint:disable-next-line: max-line-length
@@ -24,7 +24,7 @@ export class FilmService {
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
-      id: '3',
+      id: '2',
       name: 'martin hache',
       gender: 'Romance',
       // tslint:disable-next-line: max-line-length
@@ -32,7 +32,7 @@ export class FilmService {
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
-      id: '4',
+      id: '3',
       name: 'el lado oscuro del corazon',
       gender: 'Romance',
       // tslint:disable-next-line: max-line-length
@@ -66,8 +66,18 @@ export class FilmService {
   }
 
   addFilm(film) {
-    this._films.push(film);
+    const id = '' + this._films.length;
+    const newFilm = Object.assign({}, film, { id });
+    this._films.push(newFilm);
     this.storage.set('films', this._films);
+  }
+
+  updateFilm(film) {
+    const index = this._films.findIndex(f => f.id === film.id);
+    if (index > -1) {
+      this._films.splice(index, 1, film);
+      this.storage.set('films', this._films);
+    }
   }
 
   getFilm(id) {

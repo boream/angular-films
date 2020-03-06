@@ -23,7 +23,6 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    debugger
     // this.formGroup = this.formBuilder.group({
     //   name: ['', [Validators.required, Validators.minLength(4)]],
     //   gender: ['', Validators.required],
@@ -34,11 +33,9 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     // a la raul
-    debugger
     if (this.film) {
       this.formGroup = this.formBuilder.group({
-        name: [this.film.name, [Validators.required,
-        Validators.minLength(4)]],
+        name: [this.film.name, [Validators.required, Validators.minLength(4)]],
         gender: [this.film.gender, Validators.required],
         image: [this.film.image, [Validators.required, this.validateUrl]],
         imdbUrl: [this.film.imdbUrl, [Validators.required,
@@ -55,7 +52,8 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
   }
 
   onSave(form) {
-    this.save.emit(form.value);
+    const update = Object.assign({}, this.film, form.value);
+    this.save.emit(update);
     form.reset();
   }
 

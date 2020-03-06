@@ -17,7 +17,6 @@ export class FilmFormComponent implements OnInit {
   }
 
   onSave(form) {
-    debugger
     this.save.emit(form.value);
     form.reset();
   }

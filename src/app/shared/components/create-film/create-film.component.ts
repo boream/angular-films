@@ -18,14 +18,23 @@ export class CreateFilmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger
     this.activatedRoute.params.subscribe((params) => {
-      debugger
       if (params['id']) {
         this.film = this.filmService.getFilm(params['id']);
       }
     });
 
+  }
+
+  onSave(film) {
+    if (film) {
+      if (film.id) {
+        this.filmService.updateFilm(film);
+      } else {
+        this.filmService.addFilm(film);
+      }
+    }
+    this.router.navigate(['/film']);
   }
 
 }
