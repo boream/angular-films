@@ -14,7 +14,11 @@ export class ListFilmComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filmService.getFilms().subscribe(response => {
+   /* this.filmService.getFilms().subscribe(response => {
+      debugger
+      this.films = response as Array<any>;
+    });*/
+    this.filmService.getFilms().then(response => {
       debugger
       this.films = response as Array<any>;
     });
