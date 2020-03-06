@@ -10,6 +10,8 @@ export class AppComponent implements OnInit, DoCheck, OnDestroy {
 
   modalIsVisible = false;
 
+  createRoute = '/create';
+
 
   title = 'films';
 

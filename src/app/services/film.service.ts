@@ -8,6 +8,7 @@ export class FilmService {
 
   private _films = [
     {
+      id: '1',
       name: 'spectre 007',
       gender: 'Aventura',
       // tslint:disable-next-line: max-line-length
@@ -15,6 +16,7 @@ export class FilmService {
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
+      id: '2',
       name: 'badboys 3',
       gender: 'Aventura',
       // tslint:disable-next-line: max-line-length
@@ -22,6 +24,7 @@ export class FilmService {
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
+      id: '3',
       name: 'martin hache',
       gender: 'Romance',
       // tslint:disable-next-line: max-line-length
@@ -29,6 +32,7 @@ export class FilmService {
       imdbUrl: 'http://www.imdb.com/title/tt2379713/'
     },
     {
+      id: '4',
       name: 'el lado oscuro del corazon',
       gender: 'Romance',
       // tslint:disable-next-line: max-line-length
@@ -64,6 +68,10 @@ export class FilmService {
   addFilm(film) {
     this._films.push(film);
     this.storage.set('films', this._films);
+  }
+
+  getFilm(id) {
+    return this._films.find((film) => film.id === id);
   }
 
 }

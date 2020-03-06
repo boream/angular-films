@@ -1,11 +1,11 @@
 <nav class="navbar">
-  <a class="navbar-brand" routerLink="/film">Film</a>
+  <a class="navbar-brand" [routerLink]="'/film'">Film</a>
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active" routerLinkActive="active">
       <a class="nav-link" routerLink="/film">Home</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="/create">Create</a>
+      <a class="nav-link" [routerLink]="createRoute">Create</a>
     </li>
   </ul>
 </nav>
