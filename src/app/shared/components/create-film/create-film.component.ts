@@ -32,7 +32,8 @@ export class CreateFilmComponent implements OnInit {
   onSave(film) {
     if (film) {
       if (film.id) {
-        this.filmService.updateFilm(film);
+        // this.filmService.updateFilm(film);
+        this.filmService.update(film).subscribe();
       } else {
         this.filmService.addFilm(film);
       }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -18,6 +19,7 @@ registerLocaleData(localeEs, 'es-ES');
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     SharedModule,
     SlideshowModule,
     AppRoutingModule

@@ -1,10 +1,14 @@
 import { Injectable, Inject } from '@angular/core';
 import { SESSION_STORAGE, LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
+
+  private url = 'http://localhost:3000';
 
   private _films = [
     {
@@ -43,7 +47,7 @@ export class FilmService {
 
   // public films = this._films;
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
+  constructor(@Inject(LOCAL_STORAGE) private storage: StorageService, private http: HttpClient) {
     if (!storage.get('films')) {
       storage.set('films', this._films);
     } else {
@@ -82,6 +86,18 @@ export class FilmService {
 
   getFilm(id) {
     return this._films.find((film) => film.id === id);
+  }
+
+  // With http
+
+  getFilms() {
+    const url = `${this.url}/api/film`;
+    return this.http.get(url);
+  }
+
+  update(film) {
+    const url = `${this.url}/api/film/${film.id}`;
+    return this.http.put(url, film);
   }
 
 }

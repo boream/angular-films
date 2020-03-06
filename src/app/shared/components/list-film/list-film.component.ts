@@ -8,10 +8,16 @@ import { FilmService } from 'src/app/services/film.service';
 })
 export class ListFilmComponent implements OnInit {
 
+  films = [];
+
   constructor(public filmService: FilmService) {
   }
 
   ngOnInit() {
+    this.filmService.getFilms().subscribe(response => {
+      debugger
+      this.films = response as Array<any>;
+    });
   }
 
   eliminar(film) {
