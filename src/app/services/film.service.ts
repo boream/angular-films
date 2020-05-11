@@ -91,12 +91,12 @@ export class FilmService {
   // With http
 
   getFilms() {
-    const url = `${this.url}/api/film`;
+    const url = `${this.url}/api/v1/film`;
     return this.http.get(url).toPromise();
   }
 
   update(film) {
-    const url = `${this.url}/api/film/${film.id}`;
+    const url = `${this.url}/api/v1/film/${film.id}`;
     return this.http.put(url, film);
   }
 

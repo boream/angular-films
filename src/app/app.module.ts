@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './components/login/login.component';
 
 registerLocaleData(localeEs, 'es-ES');
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

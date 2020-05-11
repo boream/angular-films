@@ -6,8 +6,13 @@ import { CanActivateGuard } from './guards/can-activate.guard';
 import { CreateFilmComponent } from './shared/components/create-film/create-film.component';
 import { SureExitGuard } from './guards/sure-exit.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'film',
     component: ListFilmComponent,

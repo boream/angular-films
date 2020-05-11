@@ -33,7 +33,8 @@ import { RouterModule } from '@angular/router';
     FilmFormComponent,
     FilmFormReactiveComponent,
     CapitalizeFirstPipe,
-    ListFilmComponent
+    ListFilmComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
