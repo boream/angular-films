@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FilmService } from 'src/app/services/film.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-film',
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class ListFilmComponent implements OnInit, OnDestroy {
 
   films = [];
+  films$: Observable<Array<any>>;
 
   subscription: Subscription;
 
@@ -17,13 +18,7 @@ export class ListFilmComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.filmService.getFilms().subscribe(response => {
-      debugger
-      this.films = response as Array<any>;
-    });
-    /*this.filmService.getFilms().then(response => {
-      this.films = response as Array<any>;
-    });*/
+    this.films$ = this.filmService.getFilms();
   }
 
   ngOnDestroy(): void {

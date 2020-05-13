@@ -2,7 +2,7 @@
   <div class="card-deck-wrapper">
     <div class="card-deck">
       <app-film 
-        *ngFor="let film of films; let even = even" 
+        *ngFor="let film of films$ | async; let even = even" 
         [data]="film" 
         [isEven]="even"
         (remove)="eliminar($event)">

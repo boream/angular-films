@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -90,7 +91,7 @@ export class FilmService {
 
   // With http
 
-  getFilms() {
+  getFilms(): Observable<any> {
     const url = `${this.url}/api/v1/film`;
     return this.http.get(url);
   }
