@@ -22,8 +22,8 @@ export class CreateFilmComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.film = this.filmService.getFilm(params['id']);
+      if (params['_id']) {
+        this.film = this.filmService.getFilm(params['_id']);
       }
     });
 

@@ -16,7 +16,6 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler):
         Observable<HttpEvent<any>> {
-        debugger
         const apiUrl = `${environment.backend}/api`;
         // hace falta Authorization
         if (req.url.startsWith(apiUrl)) {
