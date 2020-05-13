@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { SESSION_STORAGE, LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
