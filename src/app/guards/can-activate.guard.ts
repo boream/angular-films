@@ -22,7 +22,6 @@ export class CanActivateGuard implements CanActivate {
   }
 
   checkLogin(): boolean {
-    debugger
     const token = this.storage.get('film-token');
     if (token) {
       return true;

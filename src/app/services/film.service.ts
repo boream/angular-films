@@ -3,13 +3,15 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Film } from '../types/film';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
 
-  private url = 'http://localhost:3000';
+  private url = `${environment.backend}/api/v1/film`;
 
   private _films = [
     {
@@ -65,18 +67,6 @@ export class FilmService {
     this._films = films;
   }
 
-  removeFilm(film) {
-    this._films = this._films.filter((data) => data.name !== film.name);
-    this.storage.set('films', this._films);
-  }
-
-  addFilm(film) {
-    const id = '' + this._films.length;
-    const newFilm = Object.assign({}, film, { id });
-    this._films.push(newFilm);
-    this.storage.set('films', this._films);
-  }
-
   updateFilm(film) {
     const index = this._films.findIndex(f => f.id === film.id);
     if (index > -1) {
@@ -85,20 +75,33 @@ export class FilmService {
     }
   }
 
-  getFilm(id) {
-    return this._films.find((film) => film.id === id);
+  getFilm(id): Observable<Film> {
+    return this.http.get<Film>(`${this.url}/${id}`).pipe(
+      map(film => Object.assign({}, film, { id: film._id }))
+    );
   }
 
-  // With http
-
   getFilms(): Observable<any> {
-    const url = `${this.url}/api/v1/film`;
-    return this.http.get(url);
+    const url = `${this.url}`;
+    return this.http.get(url).pipe(
+      map((films: any[]) => films.map(film => Object.assign({}, film, { id: film._id })))
+    );
   }
 
   update(film) {
-    const url = `${this.url}/api/v1/film/${film.id}`;
+    const url = `${this.url}/${film.id}`;
     return this.http.put(url, film);
+  }
+
+  addFilm(film) {
+    return this.http.post(this.url, film);
+  }
+
+  removeFilm(film) {
+    debugger
+    // TODO esto no va en offline
+    // this.storage.set('films', this._films);
+    return this.http.delete(`${this.url}/${film.id}`);
   }
 
 }

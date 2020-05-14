@@ -1,1 +1,1 @@
-<app-film-form-reactive [film]="film" (save)="onSave($event)"></app-film-form-reactive>
+<app-film-form-reactive [film]="film$ | async" (save)="onSave($event)"></app-film-form-reactive>

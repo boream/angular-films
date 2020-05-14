@@ -29,7 +29,15 @@ export class ListFilmComponent implements OnInit, OnDestroy {
 
   eliminar(film) {
     if (window.confirm(`¿Seguro que quiere borrar la pelicula ${film.name}?`)) {
-      this.filmService.removeFilm(film);
+      debugger
+      this.filmService.removeFilm(film).subscribe(
+        res => {
+          this.films$ = this.filmService.getFilms();
+        },
+        err => {
+          alert('No hay sido posible eliminar la película')
+        }
+      );
     }
   }
 
