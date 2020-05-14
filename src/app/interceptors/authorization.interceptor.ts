@@ -19,7 +19,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
         const apiUrl = `${environment.backend}/api`;
         // hace falta Authorization
         if (req.url.startsWith(apiUrl)) {
-            const token = this.storage.get('token');
+            const token = this.storage.get('film-token');
             // Clone the request and replace the original headers with
             // cloned headers, updated with the authorization.
             const authReq = req.clone({

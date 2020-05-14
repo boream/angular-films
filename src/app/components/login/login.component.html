@@ -1,13 +1,23 @@
 <form [formGroup]="formGroup" (ngSubmit)="onLogin(formGroup)">
-    <div class="form-group">
-        <label class="form-control-label" for="email">Email</label>
-        <input type="text" class="form-control" id="email" formControlName="email">
+  <div class="form-group">
+    <label class="form-control-label" for="email">Email</label>
+    <input type="text" class="form-control" id="email" formControlName="email">
+    <div *ngIf="formGroup.controls.email.dirty" class="alert-danger">
+      <div [hidden]="!formGroup.controls.email.errors?.required" class="form-control-feedback alert-danger">Campo
+        obligatorio</div>
+      <div [hidden]="!formGroup.controls.email.errors?.email" class="form-control-feedback alert-danger">El email es
+        incorrecto</div>
     </div>
+  </div>
 
-    <div class="form-group">
-        <label class="form-control-label" for="password">Password</label>
-        <input type="text" class="form-control" id="password" formControlName="password">
+  <div class="form-group">
+    <label class="form-control-label" for="password">Password</label>
+    <input type="text" class="form-control" id="password" formControlName="password">
+    <div *ngIf="formGroup.controls.password.dirty" class="alert-danger">
+      <div [hidden]="!formGroup.controls.password.errors?.required" class="form-control-feedback alert-danger">Campo obligatorio
+      </div>
     </div>
+  </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-primary">Login</button>
 </form>

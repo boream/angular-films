@@ -1,17 +1,34 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Injectable, Inject } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CanActivateGuard implements CanActivate {
+
+  constructor(
+    @Inject(LOCAL_STORAGE) private storage: StorageService,
+    private router: Router) {
+  }
+
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const url: string = state.url;
-    console.log(`Navegamos a ${url}`);
-    return true;
+
+    return this.checkLogin();
+  }
+
+  checkLogin(): boolean {
+    debugger
+    const token = this.storage.get('film-token');
+    if (token) {
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
   }
 
 }
