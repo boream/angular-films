@@ -27,7 +27,6 @@ export class CreateFilmComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-
     this.film$ = this.activatedRoute.params.pipe(
       switchMap(params => {
         if (params['id']) {
