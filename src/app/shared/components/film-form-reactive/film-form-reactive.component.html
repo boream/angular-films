@@ -17,13 +17,24 @@
       <label class="form-control-label" for="gender">Genero</label>
       <select class="form-control" id="gender" formControlName="gender">
         <option></option>
-        <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+        <option *ngFor="let gender of genders" [value]="gender.key">{{gender.option}}</option>
       </select>
       <div *ngIf="formGroup.controls.gender.touched && formGroup.controls.gender.errors?.required"
         class="form-control-feedback alert-danger">
         Campo obligatorio
       </div>
     </div>
+
+    <div class="form-group ">
+      <label class="form-control-label" for="year">Año</label>
+      <input type="number" class="form-control" id="year" formControlName="year">
+      <div *ngIf="formGroup.controls.year.dirty" class="alert-danger">
+        <div class="form-control-feedback" [hidden]="!formGroup.controls.year.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+    </div>
+
     <div class="form-group ">
       <label class="form-control-label" for="imdbUrl">IMDB Url</label>
       <input type="text" class="form-control" id="imdbUrl" formControlName="imdbUrl">

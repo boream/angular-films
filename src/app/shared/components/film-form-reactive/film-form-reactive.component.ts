@@ -18,7 +18,24 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
 
-  genders: string[] = ['Comedia', 'Terror', 'Acción', 'Aventura'];
+  genders = [
+    {
+      key: 'comedy',
+      option: 'Comedia'
+    },
+    {
+      key: 'terror',
+      option: 'Terror'
+    },
+    {
+      key: 'action',
+      option: 'Acción'
+    },
+    {
+      key: 'fantastic',
+      option: 'Fantasía'
+    }
+  ];
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -37,6 +54,7 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
       this.formGroup = this.formBuilder.group({
         name: [this.film.name, [Validators.required, Validators.minLength(4)]],
         gender: [this.film.gender, Validators.required],
+        year: [this.film.year, Validators.required],
         image: [this.film.image, [Validators.required, this.validateUrl]],
         imdbUrl: [this.film.imdbUrl, [Validators.required,
         this.validateUrl]],
@@ -45,6 +63,7 @@ export class FilmFormReactiveComponent implements OnInit, OnChanges {
       this.formGroup = this.formBuilder.group({
         name: ['', [Validators.required, Validators.minLength(4)]],
         gender: ['', Validators.required],
+        year: ['', Validators.required],
         image: ['', [Validators.required, this.validateUrl]],
         imdbUrl: ['', [Validators.required, this.validateUrl]],
       }/*, { validators: this.sameUrl }*/);
